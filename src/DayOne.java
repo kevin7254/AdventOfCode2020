@@ -11,19 +11,7 @@ import java.util.stream.Collectors;
  */
 public class DayOne {
 
-    public static void main(String[] args) throws IOException {
-        List<Integer> list = Files.lines(Paths.get("src/dayonenumbers.txt"))
-                .map(Integer::parseInt).collect(Collectors.toList());
-
-        final Integer SOLUTION_ONE = partOne(list);
-        final Integer SOLUTION_TWO = partTwo(list);
-
-        System.out.println(SOLUTION_ONE);
-        System.out.println(SOLUTION_TWO);
-    }
-
     private static Integer partOne(List<Integer> list) {
-
         for (Integer i : list) {
             for (Integer j : list) {
                 if ((i + j == 2020)) {
@@ -35,7 +23,6 @@ public class DayOne {
     }
 
     private static Integer partTwo(List<Integer> list) {
-
         for (Integer i : list) {
             for (Integer j : list) {
                 for (Integer k : list) {
@@ -43,9 +30,19 @@ public class DayOne {
                         return i * k * j;
                     }
                 }
-
             }
         }
         return null;
+    }
+
+    public static void main(String[] args) throws IOException {
+        List<Integer> list = Files.lines(Paths.get("src/dayonenumbers.txt"))
+                .map(Integer::parseInt).collect(Collectors.toList());
+
+        final Integer SOLUTION_ONE = partOne(list);
+        final Integer SOLUTION_TWO = partTwo(list);
+
+        System.out.println(SOLUTION_ONE);
+        System.out.println(SOLUTION_TWO);
     }
 }
